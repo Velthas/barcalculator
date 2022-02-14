@@ -76,13 +76,26 @@ const domHandler = function () {
     function updateTotal() {
 
         const priceCells = document.querySelectorAll('.price');
+        const totalCell = document.querySelector('#total')
+        totalCell.textContent = '0.00 EUR'
+
+        priceCells.forEach(cell => {
+            //Slice into the total cell and the all the ones containing the fares
+            let fare = Number(cell.textContent.split('.')[0]);
+            let total = Number(totalCell.textContent.split('.')[0]);
+
+            total += fare;
+            totalCell.textContent = `${total}.00 EUR`;
+        });
+
+        
 
 
     };
 
     
 
-    return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord}
+    return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord, updateTotal}
 
 }();
 
@@ -250,26 +263,92 @@ const barCalculator = function () {
 
     }
 
-    function calculateDayFare() {
+    function elaborateDayFare() {
 
+        //Get the date
         let date = domHandler.returnDate();
 
+        //Extract all the relevant data 
         let season = timeHandler.extrapolateDateSeason(date);
         let bar = calculateBarTier();
-        let room = domHandler.returnRoomType()
+        let room = domHandler.returnRoomType();
+
+        //Use it to calculate the fare
         let fare = prices2021.seasonAndBar[season][bar][room];
 
-        let trueBar = -(bar - 6);
+        //Make the values 'edible' and plug them into the table
+        let finalisedData =  makeItHuman(season, bar, room, fare, date)
 
-        domHandler.createNewTableRecord(room, trueBar, season, fare, date)
-
-        return prices2021.seasonAndBar[season][bar][room];
+        return finalisedData;
         
     }
 
-    const button = document.querySelector('button');
-    button.addEventListener('click', calculateDayFare);
+    function displayData () {
 
-    return {calculateDayFare}
+        //Extract all the data from the form
+        const data = elaborateDayFare();
+
+        //Plug record into the board
+        domHandler.createNewTableRecord(data.room, data.bar, data.season, data.fare, data.date);
+        domHandler.updateTotal();
+
+    }
+
+    //This function translates computer speak to human speak for the table
+    function makeItHuman(season, bar, room, fare, date) {
+
+        //Create an object to store the data
+        let data = {}
+
+        switch (true) {
+            case (season === 0):
+                data.season = 'Low Season';
+                break;
+            case (season === 1):
+                data.season = 'Middle Season';
+                break;
+            case (season === 2):
+                data.season = 'Middle-high Season';
+                break;
+            case (season === 3):
+                data.season = 'High Season';
+                break;
+            case (season === 4):
+                data.season = 'Peak Season';
+        }
+
+        data.bar = -(bar - 6);
+
+        switch (true) {
+            case (room === 0):
+                data.room = 'MUS';
+                break;
+            case (room === 1):
+                data.room = 'M/XX';
+                break;
+            case (room === 2):
+                data.room = 'JST';
+                break;
+            case (room === 3):
+                data.room = 'JSQ';
+                break;
+            case (room === 4):
+                data.room = 'SUITE';
+                break;
+
+        }
+
+        data.fare = `${fare}.00 EUR`;
+
+        data.date = date;
+
+        return data
+
+    }
+
+    const button = document.querySelector('button');
+    button.addEventListener('click', displayData);
+
+    return {elaborateDayFare}
 
 }();
