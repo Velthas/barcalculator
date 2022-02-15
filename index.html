@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
         <script src="./main.js" defer></script>
     </head>
     <body>
-        <div id="header">
+
+    <div id="header">
+        <div id="gradient">
             <div id="navbar">
-                <h1>Villa Carlotta</h1> <br>
-                <h3>Fare Calculator</h3>
+                <h1>VILLA CARLOTTA</h1> <br>
+                <h3>BAR CALCULATOR</h3>
             </div>
-            <div id="shadow">
-                <div id="hero"></div>
+            <div id="hero">
+
             </div>
         </div>
-        
-        <input type="text" name="hotelpop" id="hotelpop" placeholder="Numero di stanze occupate">
+    </div>
+    <div id="main">
+        <input type="text" name="hotelpop" id="hotelpop" placeholder="0">
         <div id="rooms">
         <input type="radio" id="mus" name="room" value="0" checked>
         <label for="mus">MUS</label>
@@ -31,7 +37,7 @@
         <button style="display:block;">Calcola Tariffa</button>
 
 
-        <table>
+        <table id="table">
             <thead>
                 <tr>
                     <th>
@@ -64,5 +70,9 @@
                 </tr>
             </tfoot>
         </table>
+    </div>
+    <div id="footer">
+        <a href="https://github.com/velthas">V</a>
+    </div>
     </body>
 </html>
