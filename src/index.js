@@ -252,7 +252,7 @@ const barCalculator = function () {
             case (numberOfRoomsSold < 14):
                 bar = 4;
                 return bar;
-            case (numberOfRoomsSold < 15):
+            case (numberOfRoomsSold === 15 || numberOfRoomsSold === 14):
                 bar = 5;
                 return bar;
             case (numberOfRoomsSold === 16 || numberOfRoomsSold > 16):
