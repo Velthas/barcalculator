@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #000;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    color: #fff;
+}
+
+#navbar h1 {
+    margin-top: 30px;
+}
+
+#navbar h1,
+#navbar h3 {
+    letter-spacing: 5px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+}
+
+#gradient {
+    background-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    height: 50vh;
+}
+
+#header {
+    background: url(./images/villacarlotta.jpg) center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+
+}
+
+#main {
+    color: white;
+    background-color: #000;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+label {
+    font-size: large;
+}
+
+input#hotelpop {
+    height: 35px;
+    width: 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: large;
+    background-color: aliceblue;
+    text-align: center;
+}
+
+input#start {
+    height: 45px;
+    font-size: large;
+    font-family: 'Oswald', Georgia, serif;
+    background-color: aliceblue;
+}
+
+table#table {
+    border-collapse: collapse;
+    width: 500px;
+    font: large;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+th {
+    background-color: #930707;
+}
+
+tr:nth-child(odd){
+    background-color: #fdfdfd;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+tfoot,
+tbody {
+    color: black;
+}
+
+button:active {
+    transform: translateY(5px);
+}
+
+button:hover {
+    background-color: #c4dff7;
+}
+button {
+    height: 45px;
+    width: 150px;
+    font-size: 20px;
+    font-family: 'Oswald';
+    background-color: aliceblue;
+    border: none;
+    transition: transform 0.3s smooth;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    font-size: large
+}
+
+a {
+    text-decoration: none;
+    color: sandybrown;
+}
+
+a:hover {
+    color: sienna
+}
