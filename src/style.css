@@ -48,8 +48,27 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 25px;
 }
+.container {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.container,
+#rooms h3 {
+    color: #adadad;
+    font-family: 'Oswald', sans-serif;
+}
+
+#rooms h3 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
 
 label {
     font-size: large;
@@ -63,6 +82,11 @@ input#hotelpop {
     font-size: large;
     background-color: aliceblue;
     text-align: center;
+}
+
+input#hotelpop:focus-visible,
+input#start:focus-visible {
+    outline: 4px solid #930707;
 }
 
 input#start {

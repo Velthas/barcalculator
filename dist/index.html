@@ -20,20 +20,28 @@
         </div>
     </div>
     <div id="main">
-        <input type="text" name="hotelpop" id="hotelpop" placeholder="0">
-        <div id="rooms">
-        <input type="radio" id="mus" name="room" value="0" checked>
-        <label for="mus">MUS</label>
-        <input type="radio" id="m" name="room" value="1">
-        <label for="m">M</label>
-        <input type="radio" id="jst" name="room" value="2">
-        <label for="jst">JST</label>
-        <input type="radio" id="jsq" name="room" value="3">
-        <label for="jsq">JSQ</label>
-        <input type="radio" id="suite" name="room" value="4">
-        <label for="suite">Suite</label>
+        <div class="container">
+            <h3>NUMERO DI STANZE OCCUPATE</h3>
+            <input type="text" name="hotelpop" id="hotelpop" placeholder="0">
         </div>
+        
+        <div id="rooms">
+            <h3>TIPO DI CAMERA</h3>
+            <input type="radio" id="mus" name="room" value="0" checked>
+            <label for="mus">MUS</label>
+            <input type="radio" id="m" name="room" value="1">
+            <label for="m">M</label>
+            <input type="radio" id="jst" name="room" value="2">
+            <label for="jst">JST</label>
+            <input type="radio" id="jsq" name="room" value="3">
+            <label for="jsq">JSQ</label>
+            <input type="radio" id="suite" name="room" value="4">
+            <label for="suite">Suite</label>
+        </div>
+        <div class="container">
+        <h3>SELEZIONE DATA</h3>
         <input type="date" name="start" id="start" min="2022-01-01" max="2022-12-31">
+        </div>
         <button style="display:block;">Calcola Tariffa</button>
 
 
@@ -72,7 +80,7 @@
         </table>
     </div>
     <div id="footer">
-        <a href="https://github.com/velthas">V</a>
+        <a href="https://github.com/velthas">(c) Velthas 2022</a>
     </div>
     </body>
 </html>
