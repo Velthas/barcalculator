@@ -176,4 +176,8 @@ a:hover {
     table#table {
         width: 300px;
     }
+
+    .error {
+        width: 70vw;
+    }
 }
