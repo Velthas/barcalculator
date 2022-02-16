@@ -93,16 +93,49 @@ const domHandler = function () {
 
     };
 
-    function createErrorDiv() {
-        const errorDiv = document.createElement('div');
-        errorDiv.classList.add('error');
+    function checkForErrors() {
+
+        const dateWidget = document.querySelector('#start');
+        const roomsInput = document.querySelector('#hotelpop');
+
+        if (dateWidget.value === '' && roomsInput.value === '') {
+            createErrorDiv("Per calcolare la tariffa bisogna specificare il numero di camere vendute e la data!");
+            return 1;
+        }
+        else if (dateWidget.value === '') {
+            createErrorDiv("Non dimenticare di inserire la data per la quale calcolare la tariffa!")
+            return 1; 
+        }
+        else if (roomsInput.value === '') {
+            createErrorDiv("Non dimenticare di inserire il numero di camere vendute per calcolare la BAR!")
+            return 1;
+        }
+        else return 0;
 
     }
 
+    function createErrorDiv(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.classList.add('error');
 
+        const main = document.querySelector('#main');
+        const table = main.querySelector('#table');
+
+
+        errorDiv.textContent = message;
+        main.insertBefore(errorDiv, table);
+    }
+
+    function deleteErrorDiv() {
+        const errorDiv = document.querySelector('.error');
+
+        if (errorDiv === null) return;
+        else errorDiv.remove();
+
+    }
     
 
-    return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord, updateTotal}
+    return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord, updateTotal, checkForErrors, deleteErrorDiv}
 
 }();
 
@@ -292,12 +325,20 @@ const barCalculator = function () {
 
     function displayData () {
 
+        //Remove the error div if it's there.
+        domHandler.deleteErrorDiv();
+
+        //Check if user forgot input
+        let error = domHandler.checkForErrors();
+        if (error === 1) return;
+
         //Extract all the data from the form
         const data = elaborateDayFare();
 
         //Plug record into the board
         domHandler.createNewTableRecord(data.room, data.bar, data.season, data.fare, data.date);
         domHandler.updateTotal();
+
 
     }
 
