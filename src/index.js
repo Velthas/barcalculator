@@ -292,11 +292,14 @@ const barCalculator = function () {
             case (numberOfRoomsSold < 14):
                 bar = 3;
                 return bar;
-            case (numberOfRoomsSold === 15 || numberOfRoomsSold === 14):
+            case (numberOfRoomsSold >= 14 && numberOfRoomsSold < 16):
                 bar = 4;
                 return bar;
             case (numberOfRoomsSold === 16 || numberOfRoomsSold > 16):
                 bar = 5;
+                return bar;
+            case (numberOfRoomsSold >= 24):
+                bar = 6;
                 return bar;
         }
 
@@ -316,7 +319,7 @@ const barCalculator = function () {
         //Use it to calculate the fare
         let fare = prices2021.seasonAndBar[season][bar][room];
 
-        //Make the values 'edible' and plug them into the table
+        //Make the values 'edible' and return them
         let finalisedData =  makeItHuman(season, bar, room, fare, date)
 
         return finalisedData;
@@ -365,7 +368,8 @@ const barCalculator = function () {
                 data.season = 'Peak Season';
         }
 
-        data.bar = -(bar - 6);
+        if (bar === 0) data.bar = 'RACK';
+        else data.bar = -(bar - 6);
 
         switch (true) {
             case (room === 0):
