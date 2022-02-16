@@ -295,7 +295,7 @@ const barCalculator = function () {
             case (numberOfRoomsSold >= 14 && numberOfRoomsSold < 16):
                 bar = 4;
                 return bar;
-            case (numberOfRoomsSold === 16 || numberOfRoomsSold > 16):
+            case (numberOfRoomsSold === 16 || numberOfRoomsSold > 16 && numberOfRoomsSold < 24):
                 bar = 5;
                 return bar;
             case (numberOfRoomsSold >= 24):
@@ -368,7 +368,7 @@ const barCalculator = function () {
                 data.season = 'Peak Season';
         }
 
-        if (bar === 0) data.bar = 'RACK';
+        if (bar === 6) data.bar = 'RACK';
         else data.bar = -(bar - 6);
 
         switch (true) {
