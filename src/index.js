@@ -93,6 +93,13 @@ const domHandler = function () {
 
     };
 
+    function createErrorDiv() {
+        const errorDiv = document.createElement('div');
+        errorDiv.classList.add('error');
+
+    }
+
+
     
 
     return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord, updateTotal}
@@ -250,13 +257,13 @@ const barCalculator = function () {
                 bar = 2;
                 return bar;
             case (numberOfRoomsSold < 14):
-                bar = 4;
+                bar = 3;
                 return bar;
             case (numberOfRoomsSold === 15 || numberOfRoomsSold === 14):
-                bar = 5;
+                bar = 4;
                 return bar;
             case (numberOfRoomsSold === 16 || numberOfRoomsSold > 16):
-                bar = 6;
+                bar = 5;
                 return bar;
         }
 
