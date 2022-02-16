@@ -154,9 +154,20 @@ button {
 
 a {
     text-decoration: none;
-    color: sandybrown;
+    color: #930707;
 }
 
 a:hover {
-    color: sienna
+    color: #700505
+}
+
+.error {
+    background-color: lightcoral;
+    border: 1px solid darkred;
+    font-size: 14px;
+    font-family: 'Georgia', sans-serif;
+    padding: 10px;
+    color: darkred;
+    border-radius: 5px;
+    width: 40vw;
 }
