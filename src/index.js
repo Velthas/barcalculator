@@ -102,6 +102,10 @@ const domHandler = function () {
             createErrorDiv("Per calcolare la tariffa bisogna specificare il numero di camere vendute e la data!");
             return 1;
         }
+        else if (isNaN(Number(roomsInput.value)) || roomsInput.value > 25) {
+            createErrorDiv("Il numero delle stanze deve essere inserito in formato numerico e non può eccedere le 25 unità (l'hotel ha solo 25 stanze)")
+            return 1;
+        }
         else if (dateWidget.value === '') {
             createErrorDiv("Non dimenticare di inserire la data per la quale calcolare la tariffa!")
             return 1; 
