@@ -59,12 +59,12 @@ body {
 }
 
 .container,
-#rooms h3 {
+#rooms h4 {
     color: #adadad;
     font-family: 'Oswald', sans-serif;
 }
 
-#rooms h3 {
+#rooms h4 {
     text-align: center;
     margin-bottom: 8px;
 }
@@ -127,21 +127,22 @@ tbody {
     color: black;
 }
 
-button:active {
+button#ratecalc:active {
     transform: translateY(5px);
 }
 
-button:hover {
+button#ratecalc:hover {
     background-color: #c4dff7;
 }
-button {
+
+button#ratecalc {
     height: 45px;
     width: 150px;
     font-size: 20px;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     background-color: aliceblue;
     border: none;
-    transition: transform 0.3s smooth;
+    transition: transform 0.3s ease-in;
 }
 
 #footer {
@@ -170,11 +171,50 @@ a:hover {
     color: darkred;
     border-radius: 5px;
     width: 40vw;
+    text-align:center;
 }
 
 @media screen and (max-width: 700px) {
     table#table {
-        width: 300px;
+        width: 90vw;
+        font-size: small;
+    }
+
+    .error {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    input#hotelpop,
+    label,
+    #ratecalc
+    {
+        font-size: 1rem;
+    }
+
+    #ratecalc,
+    input#start {
+        width: 125px;
+        height: 35px;
+    }
+
+    input#start {
+        font-size: small;
+    }
+
+
+    table#table {
+        width: 80vw;
+        font-size: smaller;
     }
 
     .error {
