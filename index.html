@@ -20,12 +20,12 @@
     </div>
     <div id="main">
         <div class="container">
-            <h3>NUMERO DI STANZE OCCUPATE</h3>
+            <h4>NUMERO DI STANZE OCCUPATE</h4>
             <input type="text" name="hotelpop" id="hotelpop" placeholder="0">
         </div>
         
         <div id="rooms">
-            <h3>TIPO DI CAMERA</h3>
+            <h4>TIPO DI CAMERA</h4>
             <input type="radio" id="mus" name="room" value="0" checked>
             <label for="mus">MUS</label>
             <input type="radio" id="m" name="room" value="1">
@@ -38,10 +38,10 @@
             <label for="suite">Suite</label>
         </div>
         <div class="container">
-        <h3>SELEZIONE DATA</h3>
+        <h4>SELEZIONE DATA</h4>
         <input type="date" name="start" id="start" min="2022-01-01" max="2022-12-31">
         </div>
-        <button style="display: block;">Calcola Tariffa</button>
+        <button style="display: block;" id="ratecalc">Calcola Tariffa</button>
 
 
         <table id="table">
