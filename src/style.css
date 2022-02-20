@@ -98,7 +98,7 @@ input#start {
 
 table#table {
     border-collapse: collapse;
-    width: 500px;
+    width: 600px;
     font: large;
 }
 
@@ -122,9 +122,15 @@ tr:nth-child(even){
 tr:hover {
     background-color: #ddd;
 }
+
 tfoot,
 tbody {
     color: black;
+}
+
+.muda {
+    background-color: #000;
+    border: none;
 }
 
 button#ratecalc:active {

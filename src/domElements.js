@@ -81,12 +81,14 @@ const domHandler = function () {
     //Each time a new cell is added, calculate the total by querying the dom for price cells
     function updateTotal() {
 
-        //Query the dom for the price cells and total
+        //Query the dom for the price cells, total and average
         const priceCells = document.querySelectorAll('.price');
-        const totalCell = document.querySelector('#total')
+        const totalCell = document.querySelector('#total');
+        const averageCell = document.querySelector('#average');
 
         //The calculation is always re-done on new entry, so total must be reset each time.
         totalCell.textContent = '0.00 EUR'
+
 
         //For each node (cell) get the number and update the total
         priceCells.forEach(cell => {
@@ -96,6 +98,10 @@ const domHandler = function () {
             let total = Number(totalCell.textContent.split('.')[0]);
 
             total += fare;
+            let average = (total / priceCells.length).toFixed(2);
+
+            //Slot everything in place
+            averageCell.textContent = average;
             totalCell.textContent = `${total}.00 EUR`;
         });
 
