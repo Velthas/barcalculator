@@ -133,15 +133,16 @@ tbody {
     border: none;
 }
 
-button#ratecalc:active {
+button:active {
     transform: translateY(5px);
 }
 
-button#ratecalc:hover {
+button:hover {
     background-color: #c4dff7;
 }
 
-button#ratecalc {
+button#ratecalc,
+button#dorder {
     height: 45px;
     width: 150px;
     font-size: 20px;

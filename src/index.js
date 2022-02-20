@@ -24,8 +24,12 @@ const displayResults = (function () {
 
     function bindEventListeners() {
 
-        const button = document.querySelector('button');
+        //Button to display data
+        const button = document.querySelector('#ratecalc');
         button.addEventListener('click', displayData);
+
+        const btn = document.querySelector('#dorder');
+        button.addEventListener('click', domHandler.orderByDate);
 
     }
     
