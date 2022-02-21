@@ -1,5 +1,3 @@
-import displayResults from "./index.js";
-
 const domHandler = function () {
 
     //Gets date from form
@@ -101,11 +99,40 @@ const domHandler = function () {
             let average = (total / priceCells.length).toFixed(2);
 
             //Slot everything in place
-            averageCell.textContent = average;
+            averageCell.textContent = average + " EUR";
             totalCell.textContent = `${total}.00 EUR`;
         });
 
     };
+
+    function orderByDate() {
+
+        //Get all the rows
+        const tbody = document.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+
+        //If there is not at least two records, just do nothing;
+        if (rows.length < 2) return;
+
+        //Extract each date from the first row cell and use it to create an array of ordered nodes
+        const sortedRows = rows.sort(function compareDates(a, b) {
+            if (new Date(a.cells[0].textContent) < new Date(b.cells[0].textContent)) {
+                return -1;
+            }
+    
+            if (new Date(a.cells[0].textContent) > new Date(b.cells[0].textContent)) {
+                return 1;
+            }   
+            
+            return 0;
+        });
+
+        //Delete the existing ones and append the ordered ones.
+        //Total and average don't change
+        rows.forEach(node => node.remove());
+        sortedRows.forEach(node => tbody.appendChild(node));
+
+    }
 
     //Returns 1 if an error is detected, 0 if everything is fine. 
     //Also appends error div on error. Maybe should split responsibilities for SRP?
@@ -159,7 +186,7 @@ const domHandler = function () {
 
     }
     
-    return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord, updateTotal, checkForErrors, deleteErrorDiv}
+    return {returnDate, returnRoomsSold, returnRoomType, createNewTableRecord, updateTotal, checkForErrors, deleteErrorDiv, orderByDate}
 
 }();
 
