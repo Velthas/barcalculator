@@ -91,6 +91,7 @@ input#start:focus-visible {
 
 input#start {
     height: 45px;
+    width: 150px;
     font-size: large;
     font-family: 'Oswald', Georgia, serif;
     background-color: aliceblue;
@@ -128,6 +129,19 @@ tbody {
     color: black;
 }
 
+.delete {
+        background-color: black;
+        border: none;
+        display: flex;
+        justify-content: flex-end;
+}
+
+.delete img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
 .muda {
     background-color: #000;
     border: none;
@@ -143,13 +157,22 @@ button:hover {
 
 button#ratecalc,
 button#dorder {
-    height: 45px;
-    width: 150px;
-    font-size: 20px;
     font-family: 'Oswald', sans-serif;
     background-color: aliceblue;
     border: none;
     transition: transform 0.3s ease-in;
+}
+
+button#ratecalc {
+    height: 45px;
+    width: 150px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+button#dorder {
+    font-size: 13px;
+    padding: 8px;
 }
 
 #footer {

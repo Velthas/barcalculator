@@ -1,3 +1,5 @@
+import x from './images/x.png'
+
 const domHandler = function () {
 
     //Gets date from form
@@ -57,6 +59,17 @@ const domHandler = function () {
         //Create a new row and appends it to the body
         const newRow = tableBody.insertRow();
 
+        //Add a button to delete entries
+        const deleteCell = newRow.insertCell();
+        const xIcon = new Image();
+        xIcon.src = x;
+        deleteCell.classList.add('delete')
+        deleteCell.appendChild(xIcon)
+        xIcon.addEventListener('click', () => {
+            newRow.remove();
+            updateTotal();
+        })
+
         //Create relevant cells and plug data in
         const dateCell = newRow.insertCell();
         dateCell.textContent = dataData;
@@ -86,6 +99,7 @@ const domHandler = function () {
 
         //The calculation is always re-done on new entry, so total must be reset each time.
         totalCell.textContent = '0.00 EUR'
+        totalCell.textContent = '0.00'
 
 
         //For each node (cell) get the number and update the total
@@ -99,7 +113,9 @@ const domHandler = function () {
             let average = (total / priceCells.length).toFixed(2);
 
             //Slot everything in place
-            averageCell.textContent = average + " EUR";
+            if (priceCells.length === 0) averageCell.textContent = '0.00 EUR'
+            else averageCell.textContent = average + " EUR";
+
             totalCell.textContent = `${total}.00 EUR`;
         });
 
@@ -114,13 +130,13 @@ const domHandler = function () {
         //If there is not at least two records, just do nothing;
         if (rows.length < 2) return;
 
-        //Extract each date from the first row cell and use it to create an array of ordered nodes
+        //Extract each date from the appropriate cell and use it to create an array of ordered nodes
         const sortedRows = rows.sort(function compareDates(a, b) {
-            if (new Date(a.cells[0].textContent) < new Date(b.cells[0].textContent)) {
+            if (new Date(a.cells[1].textContent) < new Date(b.cells[1].textContent)) {
                 return -1;
             }
     
-            if (new Date(a.cells[0].textContent) > new Date(b.cells[0].textContent)) {
+            if (new Date(a.cells[1].textContent) > new Date(b.cells[1].textContent)) {
                 return 1;
             }   
             
