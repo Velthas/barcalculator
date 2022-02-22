@@ -59,24 +59,6 @@ const barCalculator = function () {
         
     }
 
-    function displayData () {
-
-        //Remove the error div if it's there.
-        domHandler.deleteErrorDiv();
-
-        //Check if user forgot input, if so, abort
-        let error = domHandler.checkForErrors();
-        if (error === 1) return;
-
-        //Extract all the data from the form
-        const data = elaborateDayFare();
-
-        //Plug record into the board
-        domHandler.createNewTableRecord(data.room, data.bar, data.season, data.fare, data.date);
-        domHandler.updateTotal();
-
-    }
-
     //This function translates computer speak to human speak for the table.
     //Returns an object with humanised data.
     function makeItHuman(season, bar, room, fare, date) {

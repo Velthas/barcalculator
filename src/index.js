@@ -29,7 +29,7 @@ const displayResults = (function () {
         button.addEventListener('click', displayData);
 
         const btn = document.querySelector('#dorder');
-        button.addEventListener('click', domHandler.orderByDate);
+        btn.addEventListener('click', domHandler.orderByDate);
 
     }
     
