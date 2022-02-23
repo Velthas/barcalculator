@@ -99,7 +99,7 @@ const domHandler = function () {
 
         //The calculation is always re-done on new entry, so total must be reset each time.
         totalCell.textContent = '0.00 EUR'
-        totalCell.textContent = '0.00'
+        averageCell.textContent = '0.00 EUR'
 
 
         //For each node (cell) get the number and update the total
