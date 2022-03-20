@@ -5,7 +5,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
         <script src="./main.js" defer></script>
-        <title>VC - Bar Calculator</title>
+        <title>Villa Carlotta - Bar Calculator</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     </head>
     <body>
@@ -64,6 +64,12 @@
                     <th>
                         Tariffa
                     </th>
+                    <th>
+                        Early Booking
+                    </th>
+                    <th>
+                        Last Minute
+                    </th>
                 </tr>
             </thead>
             <tbody id="info">
@@ -77,6 +83,8 @@
                     <td class="muda"></td>
                     <td><b>TOTALE</b></td>
                     <td style="text-align:left;" id="total">0.00 EUR</td>
+                    <td id="ebtotal">0.00 EUR</td>
+                    <td id="lmtotal">0.00 EUR</td>
                 </tr>
                 <tr>
                     <td class="muda"></td>
@@ -85,6 +93,8 @@
                     <td class="muda"></td>
                     <td><b>MEDIA</b></td>
                     <td id="average">0.00 EUR</td>
+                    <td id="ebavg">0.00 EUR</td>
+                    <td id="lmavg">0.00</td>
                 </tr>
             </tfoot>
         </table>
