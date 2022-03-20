@@ -67,7 +67,10 @@ const domHandler = function () {
         deleteCell.appendChild(xIcon)
         xIcon.addEventListener('click', () => {
             newRow.remove();
-            updateTotal();
+            updateTotal('.price', '#total', '#average');
+            //20/03: THIS UPDATES TOTAL FOR LAST MINUTE AND EARLY BOOKING
+            updateTotal('.ebprice', '#ebtotal', '#ebavg');
+            updateTotal('.lmprice', '#lmtotal', '#lmavg');
         })
 
         //Create relevant cells and plug data in
@@ -87,15 +90,43 @@ const domHandler = function () {
         const price = newRow.insertCell();
         price.setAttribute('class', 'price');
         price.textContent = pricedata;
+
+        addLastMinuteAndEarlyBooking(pricedata, newRow);
+        //19/03 ADD CODE TO DISPLAY LAST MINUTE AND EARLY BOOKING FARES
+    }
+
+    function addLastMinuteAndEarlyBooking(price, row) {
+
+        //Convert the string into a number again
+        const numberPrice = Number(price.split('.')[0]);
+
+        //Calculate the discount amounts
+        const EarlyBookingDiscount = numberPrice * 0.15;
+        const LastMinuteDiscount = numberPrice * 0.10;
+
+        //Get the prices for both packages
+        let EarlyBookingPrice = (numberPrice - EarlyBookingDiscount).toFixed(2);
+        let LastMinutePrice = (numberPrice - LastMinuteDiscount).toFixed(2);
+
+        const EarlyBooking = row.insertCell();
+        EarlyBooking.classList.add('ebprice');
+        EarlyBooking.textContent = `${EarlyBookingPrice} EUR`
+
+        const lastMinute = row.insertCell();
+        lastMinute.classList.add('lmprice');
+        lastMinute.textContent = `${LastMinutePrice} EUR`
+        
     }
 
     //Each time a new cell is added, calculate the total by querying the dom for price cells
-    function updateTotal() {
+    //SINCE 20/03: to reuse with other columns it now takes as arguments the classes and ids of the cells
+    //it wants to calculate the totals and average for
+    function updateTotal(pricecells, totalcell, avgcell) {
 
         //Query the dom for the price cells, total and average
-        const priceCells = document.querySelectorAll('.price');
-        const totalCell = document.querySelector('#total');
-        const averageCell = document.querySelector('#average');
+        const priceCells = document.querySelectorAll(pricecells);
+        const totalCell = document.querySelector(totalcell);
+        const averageCell = document.querySelector(avgcell);
 
         //The calculation is always re-done on new entry, so total must be reset each time.
         totalCell.textContent = '0.00 EUR'
@@ -106,17 +137,17 @@ const domHandler = function () {
         priceCells.forEach(cell => {
 
             //Slice into the total cell and the ones containing the rates
-            let fare = Number(cell.textContent.split('.')[0]);
-            let total = Number(totalCell.textContent.split('.')[0]);
+            let fare = Number(cell.textContent.split(' ')[0]);
+            let total = Number(totalCell.textContent.split(' ')[0]);
 
-            total += fare;
+            total = (total + fare).toFixed(2);
             let average = (total / priceCells.length).toFixed(2);
 
             //Slot everything in place
             if (priceCells.length === 0) averageCell.textContent = '0.00 EUR'
             else averageCell.textContent = average + " EUR";
 
-            totalCell.textContent = `${total}.00 EUR`;
+            totalCell.textContent = `${total} EUR`;
         });
 
     };

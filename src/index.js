@@ -18,7 +18,9 @@ const displayResults = (function () {
 
         //Plug record into the board
         domHandler.createNewTableRecord(data.room, data.bar, data.season, data.fare, data.date);
-        domHandler.updateTotal();
+        domHandler.updateTotal('.price', '#total', '#average');
+        domHandler.updateTotal('.ebprice', '#ebtotal', '#ebavg');
+        domHandler.updateTotal('.lmprice', '#lmtotal', '#lmavg');
 
     }
 
