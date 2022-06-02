@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     </head>
     <body>
-
+ 
     <div id="header">
         <div id="gradient">
             <div id="navbar">
@@ -19,11 +19,15 @@
         </div>
     </div>
     <div id="main">
-        <div class="container">
-            <h4>NUMERO DI STANZE OCCUPATE</h4>
-            <input type="text" name="hotelpop" id="hotelpop" placeholder="0">
+        <div class="container" id="room-field">
+            <h4>NUMERO DI CAMERE CLASSIC OCCUPATE</h4>
+            <input type="number" name="classicpop" id="classic-pop" placeholder="0" min="0">
+            <h4>NUMERO DI CAMERE TRIPLE OCCUPATE</h4>
+            <input type="number" name="triplepop" id="triple-pop" placeholder="0" min="0">
+            <h4>NUMERO DI CAMERE QUADRUPLE OCCUPATE</h4>
+            <input type="number" name="quadruplepop" id="quadruple-pop" placeholder="0" min="0">
         </div>
-        
+ 
         <div id="rooms">
             <h4>TIPO DI CAMERA</h4>
             <input type="radio" id="mus" name="room" value="0" checked>
@@ -42,8 +46,8 @@
         <input type="date" name="start" id="start" min="2022-01-01" max="2022-12-31">
         </div>
         <button style="display: block;" id="ratecalc">CALCOLA TARIFFA</button>
-
-
+ 
+ 
         <table id="table">
             <thead>
                 <tr>
@@ -73,7 +77,7 @@
                 </tr>
             </thead>
             <tbody id="info">
-
+ 
             </tbody>
             <tfoot>
                 <tr>

@@ -1,40 +1,72 @@
-import './style.css'
+import './style.css';
 import domHandler from './domElements';
 import barCalculator from './bar';
 
 const displayResults = (function () {
+  function displayData() {
+    //Remove the error div if it's there.
+    domHandler.deleteErrorDiv();
 
-    function displayData () {
+    //Check if user forgot input, if so, abort
+    let error = domHandler.checkForErrors();
+    if (error === 1) return;
 
-        //Remove the error div if it's there.
-        domHandler.deleteErrorDiv();
+    // Check to see what room is selected
+    let room = domHandler.returnRoomType();
 
-        //Check if user forgot input, if so, abort
-        let error = domHandler.checkForErrors();
-        if (error === 1) return;
+    //We will store raw data about or table entry here
+    let data;
 
-        //Extract all the data from the form
-        const data = barCalculator.elaborateDayFare();
-
-        //Plug record into the board
-        domHandler.createNewTableRecord(data.room, data.bar, data.season, data.fare, data.date);
-        domHandler.updateTotal('.price', '#total', '#average');
-        domHandler.updateTotal('.ebprice', '#ebtotal', '#ebavg');
-        domHandler.updateTotal('.lmprice', '#lmtotal', '#lmavg');
-
+    //Execute functions relevant to each room type
+    switch (true) {
+      case room === 0:
+        data = barCalculator.calculateClassicsFare(0);
+        break;
+      case room === 1:
+        data = barCalculator.calculateClassicsFare(1);
+        break;
+      case room === 2:
+        data = barCalculator.calculateTripleFare();
+        break;
+      case room === 3:
+        data = barCalculator.calculateQuadrupleFare();
+        break;
+      case room === 4:
+        data = barCalculator.calculateSuiteFare();
+        break;
     }
 
-    function bindEventListeners() {
+    // Take the data and make it palatable
+    const humanisedData = barCalculator.makeItHuman(
+      data.season,
+      data.bar,
+      data.room,
+      data.rate,
+      data.date
+    );
 
-        //Button to display data
-        const button = document.querySelector('#ratecalc');
-        button.addEventListener('click', displayData);
+    //Plug record into the board
+    domHandler.createNewTableRecord(
+      humanisedData.room,
+      humanisedData.bar,
+      humanisedData.season,
+      humanisedData.fare,
+      humanisedData.date
+    );
+    domHandler.updateTotal('.price', '#total', '#average');
+    domHandler.updateTotal('.ebprice', '#ebtotal', '#ebavg');
+    domHandler.updateTotal('.lmprice', '#lmtotal', '#lmavg');
+  }
 
-        const btn = document.querySelector('#dorder');
-        btn.addEventListener('click', domHandler.orderByDate);
+  function bindEventListeners() {
+    //Button to display data
+    const button = document.querySelector('#ratecalc');
+    button.addEventListener('click', displayData);
 
-    }
-    
-    bindEventListeners();
+    //Button to order fares
+    const btn = document.querySelector('#dorder');
+    btn.addEventListener('click', domHandler.orderByDate);
+  }
 
+  bindEventListeners();
 })();
