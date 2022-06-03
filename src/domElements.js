@@ -1,4 +1,5 @@
 import x from './images/x.png';
+import federico from './media/federico.mp3'
 
 const domHandler = (function () {
   //Gets date from form
@@ -207,6 +208,8 @@ const domHandler = (function () {
   function checkForErrors() {
     const dateWidget = document.querySelector('#start');
     const roomsInput = document.querySelector('#classic-pop');
+    const tripleRoomsInput = document.querySelector('#triple-pop');
+    const quadrupleRoomsInput = document.querySelector('#quadruple-pop');
 
     if (dateWidget.value === '' && roomsInput.value === '') {
       createErrorDiv(
@@ -231,7 +234,17 @@ const domHandler = (function () {
         'Non dimenticare di inserire il numero di camere vendute per calcolare la BAR!'
       );
       return 1;
-    } else return 0;
+    } else if (quadrupleRoomsInput.value > 3 || tripleRoomsInput.value > 4) {
+      createErrorDiv(
+      'Il numero di camere elencate in uno degli slot è superiore a quelle dello stesso tipo presenti in hotel'
+      );
+      return 1; 
+    } else if ( quadrupleRoomsInput.value < 0 || tripleRoomsInput.value < 0 || roomsInput.value < 0 ) {
+      let weeWeeBoobert = new Audio(federico);
+      weeWeeBoobert.play();
+      createErrorDiv('Quindi per calcolare le bar devo andare dal CRM Guest In House?')
+      return 1;
+    }   else return 0;
   }
 
   //Creates an error div and appends it
