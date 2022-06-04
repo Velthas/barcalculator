@@ -29,9 +29,9 @@ const domHandler = (function () {
         break;
       case roomType === 'All':
         return Number(
-          roomPopContainer.querySelector('#quadruple-pop').value +
-            roomPopContainer.querySelector('#triple-pop').value +
-            roomPopContainer.querySelector('#classic-pop').value
+          Number(roomPopContainer.querySelector('#quadruple-pop').value) +
+            Number(roomPopContainer.querySelector('#triple-pop').value) +
+            Number(roomPopContainer.querySelector('#classic-pop').value)
         );
     }
   }
