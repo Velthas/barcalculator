@@ -22,11 +22,15 @@ This is my first application to ever solve a real-life problem of mine. As you c
 + **Multiple Dates**: business clients usually stay for about a day, but for longer stays having to punch in each single date (even though it can be done rather fast) can get very tedious fast. The logic to calculate and plug the data into the board for a day is already there, so I am sure I can automate the process for periods of time aswell. It's not super necessary, but would be a great quality of life change.  // AFTER REVIEWING THIS POSSIBILITY I CONCLUDED THAT IT WOULD BECOME TOO CLUNKY WITH HAVING TO SPECIFY HOW MANY ROOMS ARE SOLD FOR EACH DAY, MUCH BETTER TO JUST HAVE IT THE WAY IT IS
 + **Module Separation**: this is more of a suggestion to improve the architecture of what I've built. Even though I made use of closures and attempted to limit pollution of the namespace, I wish to do an even better job and store each module in its own file, importing and exporting exactly what I need if only to make everything a little tidier. I don't think this is too hard either, I just need be patient and commit a little time to it. // UPDATE 20/02: DONE
 
-## Limitations
+## Updates
 
-As of the current moment, the program does not do a perfect job at calculating the prices of JST and JSQ, as those two particular ones work on a scale of their own: even though they will be influenced by the BAR Tiers, their price increases depending on how many rooms of the same type are sold, while also always fluctuating to be more expensive than the other smaller rooms. 
-
-The logic is not impossible to replicate and I believe I will eventually implement it, but before I do that I need to investigate how exactly the price changes happen to make sure everything works fine and dandy.
+**03/06**: I have changed the limitation section of this readme to updates. How wonderful! 
+Anyway, today I pushed a moderately big update to Bar Calculator, here is what's new:
++ The period 10/06 to 18/07 has now been moved from middle season and middle-high season to high season on request of the reception staff
++ Before, we only had one input for number of rooms sold, now we have three, one for each room type (classic, triple and quadruple). Suite input is not there because it does not influence other rooms in any way. 
++ The rooms' rate scale based on how many of them are sold, and prices of different room types influence each other. Example: a junior suite triple can never cost less than a classic room, so in the event the price for them is the same, the triple will automatically increase. After the change, if the quadruple now cost less than the triple, the price of the quadruple will increase aswell, and so on. 
++ Fixed a small problem with Early Booking and Last Minute packages: it seems our PMS calculated them on the rate of the room for two people rather than its full capacity, so that caused some small fluctuations in the amount of discount offered. This issue is no more, as the code's way of calculating the price has been uniformed to our PMS
++ RACK rates will now be displayed when the appropriate number of rooms are sold, so no longer do you need to type in 25 to display it.
 
 ## Credits
 As cheesy as it sounds, I wanted to leave this here to my future self for review: just keep working, especially during those long night shifts.

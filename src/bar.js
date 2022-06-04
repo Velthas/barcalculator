@@ -137,7 +137,7 @@ const barCalculator = (function () {
     const tripleRate = calculateTripleFare().rate;
 
     //Keep raising until a quadruple's rate for two people is more than a triple's for two
-    while (quadrupleRate - 30 < tripleRate - 15) {
+    while (quadrupleRate - 30 <= tripleRate - 15) {
       bar += 1;
       quadrupleRate = prices2022.seasonAndBar[season][bar][roomType];
     }
