@@ -5,7 +5,7 @@ A small application meant to help the receptionists of **Villa Carlotta** (4* Ho
 
 ## Overview
 Upon first loading the one and only webpage of this project you will be presented with a form and a table. The relevant information we are looking to get from the user is:
-+ Number of rooms booked for that day.
++ Number of rooms booked for that day, spread for different room types.
 + Date of the guest's stay.
 + Type of room the guest desires for that day.
 
@@ -15,7 +15,7 @@ As of 23/02, I have updated this application to support an 'average' cell contai
 
 ## Future Updates
 
-This is my first application to ever solve a real-life problem of mine. As you can imagine I am very proud, and very eager to keep adding features to it. My hope is that my co-workers will find it as useful as me and keep coming up with suggestions to improve it. For the time being, here are some additions I thought of myself:
+This is my first application to ever solve a real-life problem of mine. My hope is that my co-workers will find it as useful as me and keep coming up with suggestions to improve it. For the time being, here are some additions I thought of myself:
 
 + **Reset Button/Delete Entry**: as of now, there is no way to remove one particular record from the list without resetting it all. I imagine it could be nice if I added a way of doing so, and I believe it could be easily implemented by using data-attributes. // UPDATE 23/02: DONE
 + **Cross Season Calculations**: occasionally a client will stay at the hotel on dates that cross different "seasons": how to behave then? The hotel's policy is to take the average between the rates and use that. Of course, calculating an average is not difficult at all, but having the website to do it for you is always more comfy then opening another page. The whole point of this app was to be more efficient while being lazy after all, no? // UPDATE 23/02: DONE
