@@ -21,11 +21,11 @@
     <div id="main">
         <div class="container" id="room-field">
             <h4>NUMERO DI CAMERE CLASSIC OCCUPATE</h4>
-            <input type="number" name="classicpop" id="classic-pop" placeholder="0" min="0" value="0">
+            <input type="number" name="classicpop" id="classic-pop" placeholder="0" min="0" max="17" value="0">
             <h4>NUMERO DI CAMERE TRIPLE OCCUPATE</h4>
-            <input type="number" name="triplepop" id="triple-pop" placeholder="0" min="0" value="0">
+            <input type="number" name="triplepop" id="triple-pop" placeholder="0" min="0" max="4" value="0">
             <h4>NUMERO DI CAMERE QUADRUPLE OCCUPATE</h4>
-            <input type="number" name="quadruplepop" id="quadruple-pop" placeholder="0" min="0" value="0">
+            <input type="number" name="quadruplepop" id="quadruple-pop" placeholder="0" min="0" max="3" value="0">
         </div>
  
         <div id="rooms">
@@ -81,21 +81,15 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td class="muda"></td>
-                    <td class="muda"></td>
-                    <td class="muda"></td>
-                    <td class="muda"></td>
-                    <td><b>TOTALE</b></td>
-                    <td style="text-align:left;" id="total">0.00 EUR</td>
+                    <td class="muda" colspan="4"></td>
+                    <td><strong>TOTALE</strong></td>
+                    <td id="total">0.00 EUR</td>
                     <td id="ebtotal">0.00 EUR</td>
                     <td id="lmtotal">0.00 EUR</td>
                 </tr>
                 <tr>
-                    <td class="muda"></td>
-                    <td class="muda"></td>
-                    <td class="muda"></td>
-                    <td class="muda"></td>
-                    <td><b>MEDIA</b></td>
+                    <td class="muda" colspan="4"></td>
+                    <td><strong>MEDIA</strong></td>
                     <td id="average">0.00 EUR</td>
                     <td id="ebavg">0.00 EUR</td>
                     <td id="lmavg">0.00 EUR</td>
