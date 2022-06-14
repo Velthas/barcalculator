@@ -38,7 +38,7 @@ const barCalculator = (function () {
       case noOfClassicSold === 15:
         bar = 5;
         break;
-      case noOfClassicSold === 16:
+      case noOfClassicSold >= 16:
         bar = 6;
     }
 
