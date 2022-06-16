@@ -154,23 +154,21 @@ const barCalculator = (function () {
   }
 
   function calculateSuiteFare() {
-    // The rate for our best room is directly influenced by all the numbers sold
-    // This is the only room that operates using a normal system I believe
-    // It's crazy, no?
-    const totalRoomsSold = domHandler.returnRoomsSold('All');
+    // The rate for our best room is directly influenced only by Classic rooms sold.
+    // This is honestly out of this world
+    // Why not all of em?
+    const totalRoomsSold = domHandler.returnRoomsSold('Classic');
 
     // Get the date and season
     const date = domHandler.returnDate();
     const season = timeHandler.extrapolateDateSeason(date);
 
-    // Room type is suite
+    // Room type is Suite
     const roomType = 4;
 
     let bar;
 
     // Now to calculate the price of the suite
-    // This is the only thing that behaves normally here
-    // It scales based on how many other rooms are sold
     switch (true) {
       case totalRoomsSold < 6:
         bar = 0;
