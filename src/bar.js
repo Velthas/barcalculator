@@ -127,6 +127,7 @@ const barCalculator = (function () {
         break;
       case noOfQuadrupleSold === 2:
         bar = 3;
+        break;
       case noOfQuadrupleSold === 3:
         bar = 5;
     }
