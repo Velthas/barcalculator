@@ -32,6 +32,11 @@ Anyway, today I pushed a moderately big update to Bar Calculator, here is what's
 + Fixed a small problem with Early Booking and Last Minute packages: it seems our PMS calculated them on the rate of the room for two people rather than its full capacity, so that caused some small fluctuations in the amount of discount offered. This issue is no more, as the code's way of calculating the price has been uniformed to our PMS
 + RACK rates will now be displayed when the appropriate number of rooms are sold, so no longer do you need to type in 25 to display it.
 
+**02/07**
+On request, did the following:
++ Since our rates were too low for the period, I was asked to change the program so that for August and July it displayed rates starting from BAR tier 4 instead of BAR tier 6. Once 12 classic rooms are sold, the program works as usual, with rates increasing as more rooms are sold. Obviously triple and quadruple rates are influenced by classic room sales, so prices are raised pretty much across the board
++ Momentarily removed Early Booking from the table, left code in for whenever we decide to resume with that package
+
 ## Credits
 As cheesy as it sounds, I wanted to leave this here to my future self for review: just keep working, especially during those long night shifts.
 I also wanted to say hi to the receptionists over at Villa Carlotta's. I know they'll never read this most likely, which is okay, and they probably think I am kind of a dork, but I love them and am blessed to be able to work with good people like them.
