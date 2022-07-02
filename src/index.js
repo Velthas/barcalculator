@@ -45,7 +45,7 @@ const displayResults = (function () {
       data.date
     );
 
-    //Plug record into the board
+    // Plug record into the board
     domHandler.createNewTableRecord(
       humanisedData.room,
       humanisedData.bar,
@@ -53,8 +53,13 @@ const displayResults = (function () {
       humanisedData.fare,
       humanisedData.date
     );
+
+    // Update the total cells
     domHandler.updateTotal('.price', '#total', '#average');
-    domHandler.updateTotal('.ebprice', '#ebtotal', '#ebavg');
+
+    // Do not calculate the early booking total for now
+    //domHandler.updateTotal('.ebprice', '#ebtotal', '#ebavg');
+
     domHandler.updateTotal('.lmprice', '#lmtotal', '#lmavg');
   }
 

@@ -136,9 +136,10 @@ const domHandler = (function () {
     let EarlyBookingPrice = (numberPrice - EarlyBookingDiscount).toFixed(2);
     let LastMinutePrice = (numberPrice - LastMinuteDiscount).toFixed(2);
 
-    const EarlyBooking = row.insertCell();
-    EarlyBooking.classList.add('ebprice');
-    EarlyBooking.textContent = `${EarlyBookingPrice} EUR`;
+    // This is commented to avoid calculating early booking, since Eugenio doesn't like it 
+    // const EarlyBooking = row.insertCell();
+    // EarlyBooking.classList.add('ebprice');
+    // EarlyBooking.textContent = `${EarlyBookingPrice} EUR`;
 
     const lastMinute = row.insertCell();
     lastMinute.classList.add('lmprice');

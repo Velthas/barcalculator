@@ -3,6 +3,49 @@ import timeHandler from './timeHandler';
 import prices2022 from './2022';
 
 const barCalculator = (function () {
+
+  // This is a small patch to force a certain behavior
+  // Just for august and july, we want the program to default at bar 4
+  // The room price will only increase after the treshold for bar 4 is surpassed
+  // This of course influences triple and quadruple rates aswell, which is intended
+  function isJulyOrAugust(date) {
+
+    let isAugustOrJuly = (new Date(date) <= new Date('2022-08-31') && new Date(date) >= new Date('2022-07-01')) ? true : false;
+    console.log(isAugustOrJuly)
+    return isAugustOrJuly
+
+  }
+
+  function julyAndAugustPatch(data) {
+
+    switch (true) {
+
+      case data.sold < 12:
+        data.bar = 2;
+        break;
+      case data.sold < 14:
+        data.bar = 3;
+        break;
+      case data.sold === 14:
+        data.bar = 4;
+        break;
+      case noOfClassicSold === 15:
+        data.bar = 5;
+        break;
+      case noOfClassicSold >= 16:
+        data.bar = 6;
+    }
+
+    // Extract rate
+    const rate = prices2022.seasonAndBar[data.season][data.bar][data.type];
+
+    // Return an object with all the info
+    let finalisedData = { 'season': data.season, 'bar': data.bar, 'room': data.type, rate, 'date': data.date };
+
+    return finalisedData;
+
+  }
+
   function calculateClassicsFare(type) {
     //Get how many rooms
     const noOfClassicSold = Number(domHandler.returnRoomsSold('Classic'));
@@ -18,6 +61,22 @@ const barCalculator = (function () {
     // Classic rooms only increase if other classic rooms are sold
     // The amount of triples and quadruples sold does not influence this rate
     let bar;
+
+    // This is plugged here for the time being
+    // Must be absolutely removed because it is external to this existing function
+    // Remove this if statement and named functions to remove the august/july patch
+    if(isJulyOrAugust(date) === true) {
+
+      const calcInfo = {
+        "sold": noOfClassicSold,
+        "date": date,
+        "season": season,
+        "type": roomType,
+      }
+
+        let manipulatedData = julyAndAugustPatch(calcInfo);
+        return manipulatedData;
+    }
 
     switch (true) {
       case noOfClassicSold < 6:
