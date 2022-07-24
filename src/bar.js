@@ -29,10 +29,10 @@ const barCalculator = (function () {
       case data.sold === 14:
         data.bar = 4;
         break;
-      case noOfClassicSold === 15:
+      case data.sold === 15:
         data.bar = 5;
         break;
-      case noOfClassicSold >= 16:
+      case data.sold >= 16:
         data.bar = 6;
     }
 
