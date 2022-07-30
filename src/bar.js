@@ -48,7 +48,7 @@ const barCalculator = (function () {
 
   function calculateClassicsFare(type) {
     //Get how many rooms
-    const noOfClassicSold = Number(domHandler.returnRoomsSold('Classic'));
+    const noOfClassicSold = domHandler.returnRoomsSold('Classic');
 
     // Get the date and season
     const date = domHandler.returnDate();
@@ -112,7 +112,7 @@ const barCalculator = (function () {
 
   function calculateTripleFare() {
     // See how many triples have been sold
-    const noOfTriplesSold = Number(domHandler.returnRoomsSold('JST'));
+    const noOfTriplesSold = domHandler.returnRoomsSold('JST');
 
     // Get the date and season
     const date = domHandler.returnDate();
@@ -165,7 +165,7 @@ const barCalculator = (function () {
 
   function calculateQuadrupleFare() {
     // Get the number of quadruples sold
-    const noOfQuadrupleSold = Number(domHandler.returnRoomsSold('JSQ'));
+    const noOfQuadrupleSold = domHandler.returnRoomsSold('JSQ');
 
     // Get the date and season
     const date = domHandler.returnDate();

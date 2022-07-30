@@ -19,13 +19,13 @@ const domHandler = (function () {
     //Based on the room type requested, return value of input
     switch (true) {
       case roomType === 'Classic':
-        return roomPopContainer.querySelector('#classic-pop').value;
+        return Number(roomPopContainer.querySelector('#classic-pop').value);
         break;
       case roomType === 'JST':
-        return roomPopContainer.querySelector('#triple-pop').value;
+        return Number(roomPopContainer.querySelector('#triple-pop').value);
         break;
       case roomType === 'JSQ':
-        return roomPopContainer.querySelector('#quadruple-pop').value;
+        return Number(roomPopContainer.querySelector('#quadruple-pop').value);
         break;
       case roomType === 'All':
         return Number(
